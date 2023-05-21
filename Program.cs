@@ -23,6 +23,14 @@ app.MapGet("/getuser2/{code}/{name}", ([FromRoute] string code, [FromRoute] stri
     return code + " - " + name;
 });
 
+app.MapGet("/getuser3", (HttpRequest request) =>
+{
+    //http://localhost:5124/getuser3 
+    //Header = product-code(Key) = 20(value)
+    //OBS:  O Header da aplicação é um Dictionary
+    return request.Headers["product-code"].ToString();
+});
+
 app.Run();
 
 public class User {
