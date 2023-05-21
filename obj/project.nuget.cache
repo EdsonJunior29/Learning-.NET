@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l1/2yvSNYFACUsfO/nCfgb3p4EWN+SaEnMszgM1ss9s5nmahkp6GGBMJhCW45mLSp2G7c3V+42QJo8du2DAnYA==",
+  "dgSpecHash": "odKBefZZZ63GWCq2F3TUvZRBMcmQiaHAtNXTBnPoe1cm5MUtVD5h9W7D1f+/xh9Zk3PUH4DH+csOEp1PQZrsbg==",
   "success": true,
-  "projectFilePath": "C:\\MEREO\\C#\\ApiEmDotNet\\ApiEmDotNet.csproj",
+  "projectFilePath": "C:\\MEREO\\c#\\ApiEmDotNet\\ApiEmDotNet.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
