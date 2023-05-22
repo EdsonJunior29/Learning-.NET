@@ -21,6 +21,11 @@ app.MapPut("/editUser", (User user) => {
     userSaved.Name = user.Name;
 });
 
+app.MapDelete("/deleteUser/{code}", ([FromRoute] int code) => {
+    var userSaved = UserRepository.GetByCode(code);
+    UserRepository.Delete(userSaved);
+});
+
 app.Run();
 
 public class User {
@@ -40,6 +45,10 @@ public static class UserRepository {
 
     public static User GetByCode(int code) {
         return Users.First(p => p.Code == code);
+    }
+
+    public static void Delete(User user) {
+        Users.Remove(user);
     }
 
 }
