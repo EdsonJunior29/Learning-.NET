@@ -4,26 +4,42 @@ using System.Collections.Generic;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello Edson!");
+app.MapGet("/", () => "Hello Edson Junior!");
 
 app.MapPost("/user", (User user) =>
 {
     UserRepository.Add(user);
+    return Results.Created("/user/" + user.Code, user.Code);
 });
 
 app.MapGet("/user/{code}", ([FromRoute] int code) =>
 {
-    return UserRepository.GetByCode(code);
+    var user = UserRepository.GetByCode(code);
+    
+    if(user == null) {
+        return Results.NotFound();
+    }
+
+    return Results.Ok(user);
 });
 
-app.MapPut("/editUser", (User user) => {
+app.MapPut("/user", (User user) => {
     var userSaved = UserRepository.GetByCode(user.Code);
+    
+    if(userSaved == null) {
+        return Results.NotFound();
+    }
+
     userSaved.Name = user.Name;
+
+    return Results.NoContent();
 });
 
-app.MapDelete("/deleteUser/{code}", ([FromRoute] int code) => {
+app.MapDelete("/user/{code}", ([FromRoute] int code) => {
     var userSaved = UserRepository.GetByCode(code);
     UserRepository.Delete(userSaved);
+
+    return Results.NoContent();
 });
 
 app.Run();
@@ -44,7 +60,7 @@ public static class UserRepository {
     }
 
     public static User GetByCode(int code) {
-        return Users.First(p => p.Code == code);
+        return Users.FirstOrDefault(p => p.Code == code);
     }
 
     public static void Delete(User user) {
