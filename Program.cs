@@ -16,6 +16,11 @@ app.MapGet("/user/{code}", ([FromRoute] int code) =>
     return UserRepository.GetByCode(code);
 });
 
+app.MapPut("/editUser", (User user) => {
+    var userSaved = UserRepository.GetByCode(user.Code);
+    userSaved.Name = user.Name;
+});
+
 app.Run();
 
 public class User {
