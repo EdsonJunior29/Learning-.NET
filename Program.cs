@@ -60,6 +60,13 @@ public class User {
     public string Name { get; set; }
 }
 
+public class Category {
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int UserId { get; set; } //Informando que essa chave estrangerira e do tipo obrigatório
+    public User user { get; set; }
+}
+
 public static class UserRepository {
     public static List<User> Users {get; set;} = Users = new List<User>();
 
@@ -88,6 +95,7 @@ public static class UserRepository {
 public class ApplicationDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -97,5 +105,5 @@ public class ApplicationDbContext : DbContext
             .Property(u => u.Name).HasMaxLength(200).IsRequired();
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-        =>optionsBuilder.UseSqlServer("Server=localhost;Database=Users;User Id=sa;Password=*****;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES");
+        =>optionsBuilder.UseSqlServer("Server=localhost;Database=Users;User Id=sa;Password=@mereo2023;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES");
 }
