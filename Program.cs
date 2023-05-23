@@ -43,7 +43,7 @@ app.MapDelete("/user/{code}", ([FromRoute] int code) => {
 });
 
 app.MapGet("/configuration/database", (IConfiguration configuration) => {
-    return Results.Ok(configuration["database:port"]);
+    return Results.Ok($"{configuration["database:connection"]}/{configuration["database:port"]}");
 });
 
 app.Run();
