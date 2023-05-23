@@ -55,6 +55,7 @@ app.MapGet("/configuration/database", (IConfiguration configuration) => {
 app.Run();
 
 public class User {
+    public int Id { get; set; }
     public int Code { get; set; }
     public string Name { get; set; }
 }
@@ -88,6 +89,13 @@ public class ApplicationDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<User>()
+            .Property(u => u.Code).IsRequired();
+        modelBuilder.Entity<User>()
+            .Property(u => u.Name).HasMaxLength(200).IsRequired();
+    }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
-        =>optionsBuilder.UseSqlServer("Server=localhost;Database=Users;User Id=sa;Password=******;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES");
+        =>optionsBuilder.UseSqlServer("Server=localhost;Database=Users;User Id=sa;Password=*****;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES");
 }
