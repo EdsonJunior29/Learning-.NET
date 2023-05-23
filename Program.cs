@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+var configuration = app.Configuration;
+UserRepository.Init(configuration);
 
 app.MapGet("/", () => "Hello Edson Junior!");
 
@@ -54,8 +56,13 @@ public class User {
 }
 
 public static class UserRepository {
-    public static List<User> Users {get; set;}
+    public static List<User> Users {get; set;} = Users = new List<User>();
 
+    //Obter configurações ao iniciar(Pegar as informações do arquivo appsettings)
+    public static void Init(IConfiguration configuration){
+        var users = configuration.GetSection("Users").Get<List<User>>();
+        Users = users;
+    }
     public static void Add(User user) {
         if (Users == null) {
             Users = new List<User>();
