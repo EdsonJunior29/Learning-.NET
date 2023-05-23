@@ -58,6 +58,7 @@ public class User {
     public int Id { get; set; }
     public int Code { get; set; }
     public string Name { get; set; }
+    public List<Product> Products { get; set; }
 }
 
 public class Category {
@@ -65,6 +66,14 @@ public class Category {
     public string Name { get; set; }
     public int UserId { get; set; } //Informando que essa chave estrangerira e do tipo obrigatório
     public User user { get; set; }
+}
+
+public class Product {
+    public int Id { get; set; }
+    public string Code { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+     public int UserId { get; set; } //Informando que essa chave estrangerira e do tipo obrigatório
 }
 
 public static class UserRepository {
@@ -96,6 +105,7 @@ public class ApplicationDbContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
