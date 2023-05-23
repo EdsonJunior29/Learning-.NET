@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,4 +79,12 @@ public static class UserRepository {
         Users.Remove(user);
     }
 
+}
+
+public class ApplicationDbContext : DbContext
+{
+    public DbSet<User> Users { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+        =>optionsBuilder.UseSqlServer("Server=localhost;Database=Users;User Id=sa;Password=******;MultipleActiveResultSets=true;Encrypt=YES;TrustServerCertificate=YES");
 }
