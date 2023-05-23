@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>();
+
 var app = builder.Build();
 var configuration = app.Configuration;
 UserRepository.Init(configuration);
