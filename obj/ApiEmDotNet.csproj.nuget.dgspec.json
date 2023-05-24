@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MEREO\\c#\\ApiEmDotNet\\ApiEmDotNet.csproj": {}
+    "C:\\MEREO\\C#\\ApiEmDotNet\\ApiEmDotNet.csproj": {}
   },
   "projects": {
-    "C:\\MEREO\\c#\\ApiEmDotNet\\ApiEmDotNet.csproj": {
+    "C:\\MEREO\\C#\\ApiEmDotNet\\ApiEmDotNet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MEREO\\c#\\ApiEmDotNet\\ApiEmDotNet.csproj",
+        "projectUniqueName": "C:\\MEREO\\C#\\ApiEmDotNet\\ApiEmDotNet.csproj",
         "projectName": "ApiEmDotNet",
-        "projectPath": "C:\\MEREO\\c#\\ApiEmDotNet\\ApiEmDotNet.csproj",
+        "projectPath": "C:\\MEREO\\C#\\ApiEmDotNet\\ApiEmDotNet.csproj",
         "packagesPath": "C:\\Users\\edson.junior\\.nuget\\packages\\",
-        "outputPath": "C:\\MEREO\\c#\\ApiEmDotNet\\obj\\",
+        "outputPath": "C:\\MEREO\\C#\\ApiEmDotNet\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\edson.junior\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -45,6 +41,22 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
